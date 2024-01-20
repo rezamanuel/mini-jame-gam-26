@@ -1,0 +1,17 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://cmaaynecjeprh"]
+
+[ext_resource type="FontFile" uid="uid://c4xc2n3wph1dp" path="res://assets/fonts/alarm clock.ttf" id="1_42my8"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ax66m"]
+bg_color = Color(0.682353, 0.596078, 0.290196, 0)
+shadow_color = Color(0, 0, 0, 0.415686)
+
+[resource]
+RichTextLabel/colors/default_color = Color(0.996078, 0.87451, 0.819608, 1)
+RichTextLabel/colors/font_outline_color = Color(0, 0, 0, 1)
+RichTextLabel/constants/outline_size = 2
+RichTextLabel/font_sizes/bold_font_size = 15
+RichTextLabel/font_sizes/mono_font_size = 17
+RichTextLabel/font_sizes/normal_font_size = 25
+RichTextLabel/fonts/normal_font = ExtResource("1_42my8")
+RichTextLabel/styles/normal = SubResource("StyleBoxFlat_ax66m")
