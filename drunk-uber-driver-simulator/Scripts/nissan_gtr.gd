@@ -47,7 +47,7 @@ func _process(delta):
 		else:
 			print("You've had too much to drink.")
 
-func _add_bac(amount: int):
+func _add_bac(amount: float):
 	bac += amount
 	onDrink.emit(bac)
 
