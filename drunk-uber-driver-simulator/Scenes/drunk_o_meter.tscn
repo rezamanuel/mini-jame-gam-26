@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://c4sf33t21xjrs"]
+
+[ext_resource type="Script" path="res://Scripts/DrunkOMeter.gd" id="1_nk7yw"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m3ukw"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5kri2"]
+bg_color = Color(0.8, 0.670588, 0.121569, 1)
+
+[node name="DrunkOMeter" type="ProgressBar"]
+offset_right = 117.0
+offset_bottom = 235.0
+theme_override_styles/background = SubResource("StyleBoxFlat_m3ukw")
+theme_override_styles/fill = SubResource("StyleBoxFlat_5kri2")
+max_value = 0.39
+step = 0.03
+fill_mode = 3
+show_percentage = false
+script = ExtResource("1_nk7yw")

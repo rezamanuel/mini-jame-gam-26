@@ -9,5 +9,5 @@ func _ready():
 func _process(delta):
 	pass
 
-func _on_nissan_gtr_on_drink(bac):
-	value += 0.03
+func _on_game_on_drink(bac):
+	value += bac
