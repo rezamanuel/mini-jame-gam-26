@@ -1,7 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://d0uquvdvuhaxv"]
+[gd_scene load_steps=15 format=3 uid="uid://bv877yivnf0wh"]
 
+[ext_resource type="Script" path="res://Scripts/game.gd" id="1_pno0n"]
 [ext_resource type="Texture2D" uid="uid://d1tp6k01my5d2" path="res://spunch.png" id="1_trsct"]
-[ext_resource type="PackedScene" uid="uid://ddhkl41f7k16l" path="res://Scenes/nissan_gtr.tscn" id="2_pdeit"]
+[ext_resource type="PackedScene" uid="uid://bb83td6650tnk" path="res://Scenes/nissan_gtr.tscn" id="2_pdeit"]
 [ext_resource type="Script" path="res://Scenes/DrunkOMeter.gd" id="4_6mdn1"]
 [ext_resource type="AudioStream" uid="uid://bh828hk852bo" path="res://assets/sounds/vine-boom.mp3" id="4_u2vm3"]
 
@@ -35,6 +36,7 @@ data = PackedVector3Array(-2.5, 0.5, 2.5, 2.5, -0.5, 2.5, -2.5, -0.5, 2.5, -2.5,
 bg_color = Color(0.8, 0.670588, 0.121569, 1)
 
 [node name="game" type="Node3D"]
+script = ExtResource("1_pno0n")
 
 [node name="ground" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_rcmvy")

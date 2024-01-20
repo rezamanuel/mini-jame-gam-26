@@ -8,4 +8,8 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	if Input.is_action_just_pressed("escape"):
+		print('hello')
+		var controls = load("res://Scenes/PauseMenu.tscn").instantiate()
+		get_tree().current_scene.add_child(controls)
+	
