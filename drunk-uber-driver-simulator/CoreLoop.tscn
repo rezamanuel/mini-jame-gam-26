@@ -1,0 +1,80 @@
+[gd_scene load_steps=9 format=3 uid="uid://cg0e5q3gij84a"]
+
+[ext_resource type="Script" path="res://SessionData.gd" id="1_3x3o6"]
+[ext_resource type="Script" path="res://NightCycleTimer.gd" id="2_1f8gj"]
+[ext_resource type="Script" path="res://PlayerInventory.gd" id="2_074xi"]
+[ext_resource type="Theme" uid="uid://cmaaynecjeprh" path="res://GameStateUI.tres" id="3_a116t"]
+[ext_resource type="Script" path="res://GameStateUI.gd" id="4_clug5"]
+[ext_resource type="Texture2D" uid="uid://u8ui6wh8j630" path="res://icon.svg" id="4_uc8xm"]
+[ext_resource type="Script" path="res://MoneyUI.gd" id="6_3rn6h"]
+
+[sub_resource type="Theme" id="Theme_dwjvk"]
+
+[node name="SessionData" type="Node"]
+script = ExtResource("1_3x3o6")
+
+[node name="NightCycleTimer" type="Timer" parent="."]
+script = ExtResource("2_1f8gj")
+
+[node name="PlayerInventory" type="Node" parent="."]
+script = ExtResource("2_074xi")
+
+[node name="TopRightBox" type="VBoxContainer" parent="."]
+anchors_preset = -1
+anchor_left = 28.825
+anchor_right = 28.825
+offset_left = -32360.4
+offset_right = -32053.4
+offset_bottom = 140.0
+theme = SubResource("Theme_dwjvk")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TopRightBox"]
+layout_mode = 2
+
+[node name="Control" type="Control" parent="TopRightBox/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="GameStateUI" type="RichTextLabel" parent="TopRightBox/HBoxContainer/Control"]
+layout_mode = 2
+anchor_left = 0.394
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -6.95
+offset_top = 22.0
+offset_bottom = -19.0
+size_flags_horizontal = 3
+theme = ExtResource("3_a116t")
+theme_override_constants/outline_size = 2
+text = "NIGHT 1
+
+8:00 PM"
+script = ExtResource("4_clug5")
+
+[node name="TextureRect" type="TextureRect" parent="TopRightBox/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("4_uc8xm")
+
+[node name="ControlMoney" type="Control" parent="TopRightBox"]
+layout_mode = 2
+
+[node name="MoneyUI" type="RichTextLabel" parent="TopRightBox/ControlMoney"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -246.0
+offset_top = -3.0
+offset_bottom = 62.0
+grow_horizontal = 0
+grow_vertical = 2
+theme = ExtResource("3_a116t")
+text = "$ "
+script = ExtResource("6_3rn6h")
+
+[connection signal="nightEnded" from="." to="TopRightBox/HBoxContainer/Control/GameStateUI" method="_on_session_data_night_ended"]
+[connection signal="tick" from="NightCycleTimer" to="TopRightBox/HBoxContainer/Control/GameStateUI" method="_on_night_cycle_timer_tick"]
+[connection signal="timeout" from="NightCycleTimer" to="." method="_on_night_cycle_timer_timeout"]
+[connection signal="moneyChanged" from="PlayerInventory" to="TopRightBox/ControlMoney/MoneyUI" method="_on_player_inventory_money_changed"]
