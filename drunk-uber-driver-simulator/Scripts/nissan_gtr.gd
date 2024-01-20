@@ -37,3 +37,12 @@ func _on_natty_lights_pounded_timeout():
 			pass
 		else:
 			steer_speed -= 0.1
+
+
+func _on_body_entered(_body):
+	$"../CollisionSound".play()
+	print("Crashed!")
+
+
+func _on_collision_sound_finished():
+	pass # Replace with function body.
