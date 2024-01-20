@@ -1,8 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://d0uquvdvuhaxv"]
+[gd_scene load_steps=14 format=3 uid="uid://d0uquvdvuhaxv"]
 
 [ext_resource type="Texture2D" uid="uid://d1tp6k01my5d2" path="res://spunch.png" id="1_trsct"]
 [ext_resource type="PackedScene" uid="uid://ddhkl41f7k16l" path="res://Scenes/nissan_gtr.tscn" id="2_pdeit"]
-[ext_resource type="Script" path="res://Scripts/NattyLightsPounded.gd" id="3_c5g37"]
+[ext_resource type="Script" path="res://Scenes/DrunkOMeter.gd" id="4_6mdn1"]
 [ext_resource type="AudioStream" uid="uid://bh828hk852bo" path="res://assets/sounds/vine-boom.mp3" id="4_u2vm3"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_75bwl"]
@@ -28,6 +28,11 @@ size = Vector3(5, 1, 5)
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_p7hpx"]
 data = PackedVector3Array(-2.5, 0.5, 2.5, 2.5, -0.5, 2.5, -2.5, -0.5, 2.5, -2.5, 0.5, -2.5, -2.5, -0.5, -2.5, 2.5, -0.5, -2.5, -2.5, 0.5, 2.5, -2.5, 0.5, -2.5, 2.5, -0.5, 2.5, -2.5, 0.5, -2.5, 2.5, -0.5, -2.5, 2.5, -0.5, 2.5, -2.5, 0.5, -2.5, -2.5, 0.5, 2.5, -2.5, -0.5, -2.5, -2.5, 0.5, 2.5, -2.5, -0.5, 2.5, -2.5, -0.5, -2.5, -2.5, -0.5, 2.5, 2.5, -0.5, 2.5, -2.5, -0.5, -2.5, 2.5, -0.5, 2.5, 2.5, -0.5, -2.5, -2.5, -0.5, -2.5)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pgp46"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5kri2"]
+bg_color = Color(0.8, 0.670588, 0.121569, 1)
 
 [node name="game" type="Node3D"]
 
@@ -69,9 +74,6 @@ center_of_mass = Vector3(0, 0, 0.3)
 max_contacts_reported = 1
 contact_monitor = true
 
-[node name="NattyLightsPounded" type="Timer" parent="Nissan GTR"]
-script = ExtResource("3_c5g37")
-
 [node name="wall2" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.10863, 37.4124)
 mesh = SubResource("BoxMesh_p08ag")
@@ -82,6 +84,13 @@ stream = ExtResource("4_u2vm3")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.36681, 0.930296, 0, -0.930296, 0.36681, 0, 25.2438, 0)
 
+[node name="DrunkOMeter" type="ProgressBar" parent="."]
+offset_right = 46.0
+offset_bottom = 147.0
+theme_override_styles/background = SubResource("StyleBoxEmpty_pgp46")
+theme_override_styles/fill = SubResource("StyleBoxFlat_5kri2")
+show_percentage = false
+script = ExtResource("4_6mdn1")
+
 [connection signal="body_entered" from="Nissan GTR" to="Nissan GTR" method="_on_body_entered"]
-[connection signal="timeout" from="Nissan GTR/NattyLightsPounded" to="Nissan GTR" method="_on_natty_lights_pounded_timeout"]
 [connection signal="finished" from="CollisionSound" to="Nissan GTR" method="_on_collision_sound_finished"]
