@@ -1,0 +1,79 @@
+[gd_scene load_steps=16 format=3 uid="uid://db1oc8aajqt4w"]
+
+[ext_resource type="PackedScene" uid="uid://digrqsh8jwkd7" path="res://assets/models/buildings/city/City_001.blend" id="1_m6m3h"]
+[ext_resource type="Texture2D" uid="uid://bx5nmexugogee" path="res://assets/models/buildings/city/City_001_Base.png" id="2_542bj"]
+[ext_resource type="Texture2D" uid="uid://82gg4iifuyqf" path="res://assets/models/buildings/city/City_001_Diffuse.jpg" id="3_adphm"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_teu18"]
+albedo_texture = ExtResource("2_542bj")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iosl5"]
+albedo_texture = ExtResource("3_adphm")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x1brk"]
+albedo_texture = ExtResource("3_adphm")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yga12"]
+albedo_texture = ExtResource("3_adphm")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uhspy"]
+albedo_texture = ExtResource("3_adphm")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d25u4"]
+albedo_texture = ExtResource("3_adphm")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6ix8y"]
+albedo_texture = ExtResource("3_adphm")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_opjha"]
+albedo_texture = ExtResource("3_adphm")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pd830"]
+albedo_texture = ExtResource("3_adphm")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4qli3"]
+albedo_texture = ExtResource("3_adphm")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4hhpy"]
+albedo_texture = ExtResource("3_adphm")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b06hm"]
+albedo_texture = ExtResource("3_adphm")
+
+[node name="City_001" instance=ExtResource("1_m6m3h")]
+
+[node name="City_001_Base_Cube" parent="." index="0"]
+material_override = SubResource("StandardMaterial3D_teu18")
+
+[node name="City_001_Tree_002" parent="." index="1"]
+material_override = SubResource("StandardMaterial3D_iosl5")
+
+[node name="City_001_Building_011" parent="." index="5"]
+material_override = SubResource("StandardMaterial3D_x1brk")
+
+[node name="City_001_Building_021" parent="." index="7"]
+material_override = SubResource("StandardMaterial3D_yga12")
+
+[node name="City_001_Building_018" parent="." index="10"]
+material_override = SubResource("StandardMaterial3D_uhspy")
+
+[node name="City_001_Building_015" parent="." index="12"]
+material_override = SubResource("StandardMaterial3D_d25u4")
+
+[node name="City_001_Building_007" parent="." index="18"]
+material_override = SubResource("StandardMaterial3D_6ix8y")
+
+[node name="City_001_Building_006" parent="." index="19"]
+material_override = SubResource("StandardMaterial3D_opjha")
+
+[node name="City_001_Building_005" parent="." index="20"]
+material_override = SubResource("StandardMaterial3D_pd830")
+
+[node name="City_001_Building_004" parent="." index="21"]
+material_override = SubResource("StandardMaterial3D_4qli3")
+
+[node name="City_001_Building_002" parent="." index="23"]
+material_override = SubResource("StandardMaterial3D_4hhpy")
+
+[node name="City_001_Park_path" parent="." index="27"]
+material_override = SubResource("StandardMaterial3D_b06hm")
