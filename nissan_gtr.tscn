@@ -1,4 +1,6 @@
-[gd_scene load_steps=22 format=3 uid="uid://bb83td6650tnk"]
+[gd_scene load_steps=23 format=3 uid="uid://bb83td6650tnk"]
+
+[ext_resource type="Script" path="res://nissan_gtr.gd" id="1_3tjrp"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qo16r"]
 resource_name = "tire"
@@ -474,6 +476,7 @@ points = PackedVector3Array(1.20388, -0.438554, -1.13051, 1.1928, 0.0953528, 2.1
 [node name="Nissan GTR" type="VehicleBody3D"]
 mass = 80.0
 gravity_scale = 1.5
+script = ExtResource("1_3tjrp")
 
 [node name="backleft" type="VehicleWheel3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.02915, -0.385795, -1.6363)
