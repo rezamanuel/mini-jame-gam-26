@@ -1,0 +1,70 @@
+[gd_scene load_steps=4 format=3 uid="uid://bmlq866fl5q0a"]
+
+[ext_resource type="Script" path="res://Scripts/ControlsMenu.gd" id="1_nqn8a"]
+
+[sub_resource type="Gradient" id="Gradient_xc3bs"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_r20lr"]
+gradient = SubResource("Gradient_xc3bs")
+fill_from = Vector2(1, 0)
+fill_to = Vector2(0, 0)
+
+[node name="ControlsMenu" type="Node"]
+script = ExtResource("1_nqn8a")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+texture = SubResource("GradientTexture2D_r20lr")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GasControlLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Gas: W"
+horizontal_alignment = 2
+
+[node name="ReverseControlLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Reverse: S"
+horizontal_alignment = 2
+
+[node name="SteerLeftControlLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Steer Left: A"
+horizontal_alignment = 2
+
+[node name="SteerRightControlLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Steer Right: D"
+
+[node name="ExitButton" type="Button" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -52.5
+offset_top = -72.245
+offset_right = 52.5
+offset_bottom = -41.245
+grow_horizontal = 2
+grow_vertical = 0
+text = "Exit"
+
+[connection signal="pressed" from="ExitButton" to="." method="_on_exit_button_pressed"]
