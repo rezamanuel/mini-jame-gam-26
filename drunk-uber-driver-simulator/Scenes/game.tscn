@@ -79,6 +79,9 @@ mesh = SubResource("BoxMesh_p08ag")
 [node name="CollisionSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_u2vm3")
 
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.36681, 0.930296, 0, -0.930296, 0.36681, 0, 25.2438, 0)
+
 [connection signal="body_entered" from="Nissan GTR" to="Nissan GTR" method="_on_body_entered"]
 [connection signal="timeout" from="Nissan GTR/NattyLightsPounded" to="Nissan GTR" method="_on_natty_lights_pounded_timeout"]
 [connection signal="finished" from="CollisionSound" to="Nissan GTR" method="_on_collision_sound_finished"]
