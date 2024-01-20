@@ -477,6 +477,7 @@ points = PackedVector3Array(1.20388, -0.438554, -1.13051, 1.1928, 0.0953528, 2.1
 mass = 80.0
 gravity_scale = 1.5
 can_sleep = false
+contact_monitor = true
 script = ExtResource("1_3tjrp")
 
 [node name="backleft" type="VehicleWheel3D" parent="."]

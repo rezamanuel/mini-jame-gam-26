@@ -1,6 +1,5 @@
 extends VehicleBody3D
 
-
 var max_rpm = 1000
 var max_torque = 400
 var rng = RandomNumberGenerator.new()
@@ -16,11 +15,12 @@ func _physics_process(delta):
 	rpm = abs($backright.get_rpm())
 	$backright.engine_force = acceleration * max_torque * (1 - rpm / max_rpm)
 
-func _process(delta):
-	pass
+func _process(_delta):
+	if Input.is_action_just_pressed("reset"):
+		_reset_car()
 
 func _on_body_entered(_body):
-	$"../../CollisionSound".play()
+	$"../CollisionSound".play()
 	print("Crashed!")
 
 func _on_collision_sound_finished():
@@ -35,8 +35,6 @@ func _drink():
 		else:
 			$backleft.wheel_friction_slip -= 0.5
 			$backright.wheel_friction_slip -= 0.5
-			#$frontleft.wheel_friction_slip -= 0.5
-			#$frontright.wheel_friction_slip -= 0.5
 	if randnum == 1:
 		if $backleft.wheel_roll_influence > 1.5:
 			pass
@@ -50,3 +48,9 @@ func _drink():
 			pass
 		else:
 			steer_speed -= 0.1
+
+func _reset_car():
+	rotation = Vector3(0, rotation.y, 0)
+	print("Reset!")
+	get_parent()._reset_bac()
+	$"../DrunkOMeter"._reset_progress()

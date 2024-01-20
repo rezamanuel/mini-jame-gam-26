@@ -1,11 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://d0uquvdvuhaxv"]
+[gd_scene load_steps=13 format=3 uid="uid://d0uquvdvuhaxv"]
 
 [ext_resource type="Script" path="res://Scripts/game.gd" id="1_pno0n"]
 [ext_resource type="Texture2D" uid="uid://d1tp6k01my5d2" path="res://spunch.png" id="1_trsct"]
 [ext_resource type="PackedScene" uid="uid://bb83td6650tnk" path="res://Scenes/nissan_gtr.tscn" id="2_pdeit"]
 [ext_resource type="AudioStream" uid="uid://bh828hk852bo" path="res://assets/sounds/vine-boom.mp3" id="4_u2vm3"]
 [ext_resource type="PackedScene" uid="uid://c4sf33t21xjrs" path="res://Scenes/drunk_o_meter.tscn" id="5_hqar6"]
-[ext_resource type="Script" path="res://Scenes/CarSpawner.gd" id="5_mla80"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_75bwl"]
 albedo_texture = ExtResource("1_trsct")
@@ -34,6 +33,12 @@ data = PackedVector3Array(-2.5, 0.5, 2.5, 2.5, -0.5, 2.5, -2.5, -0.5, 2.5, -2.5,
 [node name="game" type="Node3D"]
 script = ExtResource("1_pno0n")
 
+[node name="NissanGTR" parent="." instance=ExtResource("2_pdeit")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.52396, -4.56613)
+center_of_mass_mode = 1
+center_of_mass = Vector3(0, 0, 0.3)
+max_contacts_reported = 1
+
 [node name="ground" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_rcmvy")
 
@@ -57,7 +62,7 @@ shape = SubResource("ConcavePolygonShape3D_pkfo8")
 [node name="StaticBody3D2" type="StaticBody3D" parent="wall"]
 
 [node name="ramp" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.0119378, 0, 0.999929, 0, 1, 0, -0.999929, 0, 0.0119378, 0, 0.992822, 4.26783)
+transform = Transform3D(1.72729, 0, 2.45285, 0, 9, 0, -2.45285, 0, 1.72729, 0, 0.992822, 4.26783)
 mesh = SubResource("PrismMesh_uwwxu")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="ramp"]
@@ -77,16 +82,6 @@ transform = Transform3D(1, 0, 0, 0, 0.36681, 0.930296, 0, -0.930296, 0.36681, 0,
 
 [node name="DrunkOMeter" parent="." instance=ExtResource("5_hqar6")]
 
-[node name="CarSpawner" type="Node3D" parent="."]
-script = ExtResource("5_mla80")
-
-[node name="NissanGTR" parent="CarSpawner" instance=ExtResource("2_pdeit")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.52396, -4.56613)
-center_of_mass_mode = 1
-center_of_mass = Vector3(0, 0, 0.3)
-max_contacts_reported = 1
-contact_monitor = true
-
 [connection signal="onDrink" from="." to="DrunkOMeter" method="_on_game_on_drink"]
-[connection signal="finished" from="CollisionSound" to="CarSpawner/NissanGTR" method="_on_collision_sound_finished"]
-[connection signal="body_entered" from="CarSpawner/NissanGTR" to="CarSpawner/NissanGTR" method="_on_body_entered"]
+[connection signal="body_entered" from="NissanGTR" to="NissanGTR" method="_on_body_entered"]
+[connection signal="finished" from="CollisionSound" to="NissanGTR" method="_on_collision_sound_finished"]
