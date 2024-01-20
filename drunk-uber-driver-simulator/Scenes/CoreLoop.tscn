@@ -1,23 +1,23 @@
 [gd_scene load_steps=9 format=3 uid="uid://cg0e5q3gij84a"]
 
-[ext_resource type="Script" path="res://SessionData.gd" id="1_3x3o6"]
-[ext_resource type="Script" path="res://NightCycleTimer.gd" id="2_1f8gj"]
-[ext_resource type="Script" path="res://PlayerInventory.gd" id="2_074xi"]
-[ext_resource type="Theme" uid="uid://cmaaynecjeprh" path="res://GameStateUI.tres" id="3_a116t"]
-[ext_resource type="Script" path="res://GameStateUI.gd" id="4_clug5"]
-[ext_resource type="Texture2D" uid="uid://u8ui6wh8j630" path="res://icon.svg" id="4_uc8xm"]
-[ext_resource type="Script" path="res://MoneyUI.gd" id="6_3rn6h"]
+[ext_resource type="Script" path="res://Scripts/SessionData.gd" id="1_d50y5"]
+[ext_resource type="Script" path="res://NightCycleTimer.gd" id="2_44kwh"]
+[ext_resource type="Script" path="res://Scripts/PlayerInventory.gd" id="3_m25fl"]
+[ext_resource type="Theme" uid="uid://cmaaynecjeprh" path="res://GameStateUI.tres" id="4_5dakx"]
+[ext_resource type="Script" path="res://Scripts/GameStateUI.gd" id="5_0nfe5"]
+[ext_resource type="Texture2D" uid="uid://u8ui6wh8j630" path="res://icon.svg" id="6_1lvje"]
+[ext_resource type="Script" path="res://Scripts/MoneyUI.gd" id="7_lptr6"]
 
 [sub_resource type="Theme" id="Theme_dwjvk"]
 
 [node name="SessionData" type="Node"]
-script = ExtResource("1_3x3o6")
+script = ExtResource("1_d50y5")
 
 [node name="NightCycleTimer" type="Timer" parent="."]
-script = ExtResource("2_1f8gj")
+script = ExtResource("2_44kwh")
 
 [node name="PlayerInventory" type="Node" parent="."]
-script = ExtResource("2_074xi")
+script = ExtResource("3_m25fl")
 
 [node name="TopRightBox" type="VBoxContainer" parent="."]
 anchors_preset = -1
@@ -44,16 +44,16 @@ offset_left = -6.95
 offset_top = 22.0
 offset_bottom = -19.0
 size_flags_horizontal = 3
-theme = ExtResource("3_a116t")
+theme = ExtResource("4_5dakx")
 theme_override_constants/outline_size = 2
 text = "NIGHT 1
 
 8:00 PM"
-script = ExtResource("4_clug5")
+script = ExtResource("5_0nfe5")
 
 [node name="TextureRect" type="TextureRect" parent="TopRightBox/HBoxContainer"]
 layout_mode = 2
-texture = ExtResource("4_uc8xm")
+texture = ExtResource("6_1lvje")
 
 [node name="ControlMoney" type="Control" parent="TopRightBox"]
 layout_mode = 2
@@ -70,9 +70,9 @@ offset_top = -3.0
 offset_bottom = 62.0
 grow_horizontal = 0
 grow_vertical = 2
-theme = ExtResource("3_a116t")
+theme = ExtResource("4_5dakx")
 text = "$ "
-script = ExtResource("6_3rn6h")
+script = ExtResource("7_lptr6")
 
 [connection signal="nightEnded" from="." to="TopRightBox/HBoxContainer/Control/GameStateUI" method="_on_session_data_night_ended"]
 [connection signal="tick" from="NightCycleTimer" to="TopRightBox/HBoxContainer/Control/GameStateUI" method="_on_night_cycle_timer_tick"]
