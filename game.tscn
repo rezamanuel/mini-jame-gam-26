@@ -1,0 +1,133 @@
+[gd_scene load_steps=13 format=3 uid="uid://d0uquvdvuhaxv"]
+
+[ext_resource type="Script" path="res://car.gd" id="1_iiwjc"]
+[ext_resource type="Texture2D" uid="uid://d1tp6k01my5d2" path="res://spunch.png" id="1_trsct"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_75bwl"]
+albedo_texture = ExtResource("1_trsct")
+uv1_triplanar = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_rcmvy"]
+material = SubResource("StandardMaterial3D_75bwl")
+size = Vector3(250, 1, 250)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_8qhgn"]
+data = PackedVector3Array(-125, 0.5, 125, 125, 0.5, 125, -125, -0.5, 125, 125, 0.5, 125, 125, -0.5, 125, -125, -0.5, 125, 125, 0.5, -125, -125, 0.5, -125, 125, -0.5, -125, -125, 0.5, -125, -125, -0.5, -125, 125, -0.5, -125, 125, 0.5, 125, 125, 0.5, -125, 125, -0.5, 125, 125, 0.5, -125, 125, -0.5, -125, 125, -0.5, 125, -125, 0.5, -125, -125, 0.5, 125, -125, -0.5, -125, -125, 0.5, 125, -125, -0.5, 125, -125, -0.5, -125, 125, 0.5, 125, -125, 0.5, 125, 125, 0.5, -125, -125, 0.5, 125, -125, 0.5, -125, 125, 0.5, -125, -125, -0.5, 125, 125, -0.5, 125, -125, -0.5, -125, 125, -0.5, 125, 125, -0.5, -125, -125, -0.5, -125)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w0thq"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_ka2cb"]
+material = SubResource("StandardMaterial3D_w0thq")
+size = Vector3(1.5, 0.5, 3)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_uoi6j"]
+points = PackedVector3Array(-0.77381, 0.297507, -1.52351, 0.73229, -0.25, 1.39684, -0.77381, 0.297507, 1.52351, 0.797465, 0.297619, -1.52351, -0.708481, -0.25, -1.39684, 0.73229, -0.25, -1.39684, -0.708481, -0.25, 1.39684, 0.797465, 0.297619, 1.52351)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3mulb"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_i804c"]
+material = SubResource("StandardMaterial3D_3mulb")
+top_radius = 0.4
+bottom_radius = 0.4
+height = 0.25
+radial_segments = 12
+
+[sub_resource type="PrismMesh" id="PrismMesh_uwwxu"]
+left_to_right = 0.0
+size = Vector3(5, 1, 5)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_p7hpx"]
+data = PackedVector3Array(-2.5, 0.5, 2.5, 2.5, -0.5, 2.5, -2.5, -0.5, 2.5, -2.5, 0.5, -2.5, -2.5, -0.5, -2.5, 2.5, -0.5, -2.5, -2.5, 0.5, 2.5, -2.5, 0.5, -2.5, 2.5, -0.5, 2.5, -2.5, 0.5, -2.5, 2.5, -0.5, -2.5, 2.5, -0.5, 2.5, -2.5, 0.5, -2.5, -2.5, 0.5, 2.5, -2.5, -0.5, -2.5, -2.5, 0.5, 2.5, -2.5, -0.5, 2.5, -2.5, -0.5, -2.5, -2.5, -0.5, 2.5, 2.5, -0.5, 2.5, -2.5, -0.5, -2.5, 2.5, -0.5, 2.5, 2.5, -0.5, -2.5, -2.5, -0.5, -2.5)
+
+[node name="game" type="Node3D"]
+
+[node name="ground" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_rcmvy")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="ground"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ground/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_8qhgn")
+
+[node name="car" type="VehicleBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.277113, 0)
+gravity_scale = 1.5
+script = ExtResource("1_iiwjc")
+
+[node name="car_body" type="MeshInstance3D" parent="car"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.476846, 0)
+layers = 2
+mesh = SubResource("BoxMesh_ka2cb")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="car"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.476846, 0)
+shape = SubResource("ConvexPolygonShape3D_uoi6j")
+
+[node name="front_right_wheel" type="VehicleWheel3D" parent="car"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.988955, 0.693172, 0.991805)
+use_as_steering = true
+wheel_roll_influence = 0.0
+wheel_friction_slip = 1.0
+suspension_stiffness = 50.0
+damping_compression = 2.0
+damping_relaxation = 1.5
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="car/front_right_wheel"]
+transform = Transform3D(-4.37114e-08, -1, 0, -4.37114e-08, 1.91069e-15, -1, 1, -4.37114e-08, -4.37114e-08, 0, 0, 0)
+mesh = SubResource("CylinderMesh_i804c")
+
+[node name="back_right_wheel" type="VehicleWheel3D" parent="car"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.988612, 0.692813, -1.05164)
+use_as_traction = true
+wheel_roll_influence = 0.0
+wheel_friction_slip = 1.0
+suspension_stiffness = 50.0
+damping_compression = 2.0
+damping_relaxation = 1.5
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="car/back_right_wheel"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("CylinderMesh_i804c")
+
+[node name="front_left_wheel" type="VehicleWheel3D" parent="car"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.12223, 0.708755, 0.956617)
+use_as_steering = true
+wheel_roll_influence = 0.0
+wheel_friction_slip = 1.0
+suspension_stiffness = 50.0
+damping_compression = 2.0
+damping_relaxation = 1.5
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="car/front_left_wheel"]
+transform = Transform3D(-4.37114e-08, -1, 0, -4.37114e-08, 1.91069e-15, 1, -1, 4.37114e-08, -4.37114e-08, 0, 0, 0)
+mesh = SubResource("CylinderMesh_i804c")
+
+[node name="back_left_wheel" type="VehicleWheel3D" parent="car"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.12257, 0.708396, -1.03738)
+use_as_traction = true
+wheel_roll_influence = 0.0
+wheel_friction_slip = 1.0
+suspension_stiffness = 50.0
+damping_compression = 2.0
+damping_relaxation = 1.5
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="car/back_left_wheel"]
+transform = Transform3D(-4.37114e-08, -1, 0, -4.37114e-08, 1.91069e-15, 1, -1, 4.37114e-08, -4.37114e-08, 0, 0, 0)
+mesh = SubResource("CylinderMesh_i804c")
+
+[node name="Camera3D" type="Camera3D" parent="car"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 2, -3)
+fov = 70.0
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.0559831, -0.845886, 0.530417, -0.0887863, 0.533364, 0.841214, -0.994476, -3.74553e-09, -0.104962, 6.18556, 10.5087, -7.98521)
+
+[node name="ramp" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.0119378, 0, 0.999929, 0, 1, 0, -0.999929, 0, 0.0119378, 0, 0.992822, 4.26783)
+mesh = SubResource("PrismMesh_uwwxu")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="ramp"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ramp/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_p7hpx")
