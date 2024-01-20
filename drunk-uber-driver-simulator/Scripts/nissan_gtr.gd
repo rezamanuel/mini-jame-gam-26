@@ -18,7 +18,7 @@ func _physics_process(delta):
 
 func _process(delta):
 	if Input.is_action_just_pressed("drink"):
-		if bac <= 0.4:
+		if bac < 0.39:
 			_add_bac(0.03)
 			var randnum = rng.randi_range(0, 2)
 			print("Random effect " + str(randnum) + " triggered")
