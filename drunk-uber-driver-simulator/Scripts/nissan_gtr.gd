@@ -5,6 +5,7 @@ var max_torque = 400
 var rng = RandomNumberGenerator.new()
 var steer_speed = 5
 var spawn_position = Vector3(0,1.5,0)
+var effects = []
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
@@ -28,29 +29,48 @@ func _on_collision_sound_finished():
 
 func _drink():
 	var randnum = rng.randi_range(0, 2)
+	effects.append(randnum)
+	_change_car_physics(randnum, 1)
 	print("Random effect " + str(randnum) + " triggered")
-	if randnum == 0:
-		if $backleft.wheel_friction_slip < 1:
-			pass
-		else:
-			$backleft.wheel_friction_slip -= 0.5
-			$backright.wheel_friction_slip -= 0.5
-	if randnum == 1:
-		if $backleft.wheel_roll_influence > 1.5:
-			pass
-		else:
-			$backleft.wheel_roll_influence += 0.1
-			$backright.wheel_roll_influence += 0.1
-			$frontleft.wheel_roll_influence += 0.1
-			$frontright.wheel_roll_influence += 0.1
-	if randnum == 2:
-		if steer_speed < 0.1:
-			pass
-		else:
-			steer_speed -= 0.1
-
+	
 func _reset_car():
 	rotation = Vector3(0, rotation.y, 0)
+	linear_velocity = Vector3(0, 0, 0)
+	$camera_pivot._reset_drink()
 	print("Reset!")
 	get_parent()._reset_bac()
 	$"../DrunkOMeter"._reset_progress()
+
+
+func _on_sober_timeout():
+	if get_parent().bac != 0:
+		$camera_pivot._sober()
+		_sober()
+	else:
+		pass
+
+func _sober():
+	if effects.size() != 0:
+		var num = effects.pop_back()
+		_change_car_physics(num, -1)
+	
+func _change_car_physics(num: int, mod: int):
+	if num == 0:
+		if $backleft.wheel_friction_slip < 1:
+			pass
+		else:
+			$backleft.wheel_friction_slip -= 0.5 * mod
+			$backright.wheel_friction_slip -= 0.5 * mod
+	if num == 1:
+		if $backleft.wheel_roll_influence > 1.5:
+			pass
+		else:
+			$backleft.wheel_roll_influence += 0.1 * mod
+			$backright.wheel_roll_influence += 0.1 * mod
+			$frontleft.wheel_roll_influence += 0.1 * mod
+			$frontright.wheel_roll_influence += 0.1 * mod
+	if num == 2:
+		if steer_speed < 0.1:
+			pass
+		else:
+			steer_speed -= 0.1 * mod

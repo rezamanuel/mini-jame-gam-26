@@ -19,6 +19,7 @@ func _process(_delta):
 			_add_bac(0.03)
 			print("Your bac is now " + str(bac))
 			$NissanGTR._drink()
+			$NissanGTR/camera_pivot._drink()
 		else:
 			print("You've had too much to drink")
 
@@ -28,3 +29,9 @@ func _add_bac(amount: float):
 
 func _reset_bac():
 	bac = 0
+
+func _on_sober_timeout():
+	if bac > 0:
+		_add_bac(-0.03)
+	else:
+		pass

@@ -1,6 +1,7 @@
-[gd_scene load_steps=23 format=3 uid="uid://bb83td6650tnk"]
+[gd_scene load_steps=24 format=3 uid="uid://bb83td6650tnk"]
 
 [ext_resource type="Script" path="res://Scripts/nissan_gtr.gd" id="1_3tjrp"]
+[ext_resource type="Script" path="res://Scenes/camera_pivot.gd" id="2_tr4qd"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qo16r"]
 resource_name = "tire"
@@ -543,5 +544,8 @@ skeleton = NodePath("")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("ConvexPolygonShape3D_s4uh8")
 
-[node name="Camera3D" type="Camera3D" parent="."]
+[node name="camera_pivot" type="Node3D" parent="."]
+script = ExtResource("2_tr4qd")
+
+[node name="Camera3D" type="Camera3D" parent="camera_pivot"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 2.5727, -7.43343)
