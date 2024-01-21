@@ -15,6 +15,9 @@ func _on_game_on_drink(bac):
 func _reset_progress():
 	value = 0
 
-
 func _on_timer_timeout():
+	pass # Replace with function body.
+
+
+func _on_sober_timeout():
 	pass # Replace with function body.

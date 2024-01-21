@@ -92,3 +92,4 @@ autostart = true
 [connection signal="timeout" from="DrunkOMeter/sober" to="." method="_on_sober_timeout"]
 [connection signal="timeout" from="DrunkOMeter/sober" to="NissanGTR" method="_on_sober_timeout"]
 [connection signal="timeout" from="DrunkOMeter/sober" to="DrunkOMeter" method="_on_timer_timeout"]
+[connection signal="timeout" from="DrunkOMeter/sober" to="DrunkOMeter" method="_on_sober_timeout"]
