@@ -1,3 +1,39 @@
-[gd_scene format=3 uid="uid://cbjiuvcsl7pah"]
+[gd_scene load_steps=7 format=3 uid="uid://cbjiuvcsl7pah"]
 
-[node name="RezaTest" type="Node3D"]
+[ext_resource type="PackedScene" uid="uid://bb83td6650tnk" path="res://Scenes/nissan_gtr.tscn" id="1_mn8jo"]
+[ext_resource type="Texture2D" uid="uid://u8ui6wh8j630" path="res://icon.svg" id="2_6lskc"]
+[ext_resource type="PackedScene" uid="uid://bkvy4488fa76d" path="res://trip.tscn" id="3_bga8a"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lc3uy"]
+albedo_texture = ExtResource("2_6lskc")
+uv1_scale = Vector3(-2.77, -2.77, -2.77)
+uv1_triplanar = true
+uv1_triplanar_sharpness = 0.901251
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_g88tw"]
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_oa7sr"]
+data = PackedVector3Array(1, 0, 1, -1, 0, 1, 1, 0, -1, -1, 0, 1, -1, 0, -1, 1, 0, -1)
+
+[node name="RezaTest" type="Node"]
+
+[node name="Nissan GTR" parent="." instance=ExtResource("1_mn8jo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.19633, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(52.4605, 0, 0, 0, 1, 0, 0, 0, 59.5879, 0, 0.243983, 0)
+material_override = SubResource("StandardMaterial3D_lc3uy")
+mesh = SubResource("PlaneMesh_g88tw")
+skeleton = NodePath("../Nissan GTR")
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D2"]
+shape = SubResource("ConcavePolygonShape3D_oa7sr")
+
+[node name="light" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.187901, 0.982188, 0, -0.982188, 0.187901, -0.0402851, 12.1149, -12.4439)
+
+[node name="TripManager" parent="." instance=ExtResource("3_bga8a")]
+
+[editable path="Nissan GTR"]
