@@ -38,21 +38,26 @@ grow_vertical = 2
 [node name="GasControlLabel" type="Label" parent="VBoxContainer"]
 layout_mode = 2
 text = "Gas: W"
-horizontal_alignment = 2
+
+[node name="SteerLeftControlLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Left: A"
 
 [node name="ReverseControlLabel" type="Label" parent="VBoxContainer"]
 layout_mode = 2
 text = "Reverse: S"
-horizontal_alignment = 2
-
-[node name="SteerLeftControlLabel" type="Label" parent="VBoxContainer"]
-layout_mode = 2
-text = "Steer Left: A"
-horizontal_alignment = 2
 
 [node name="SteerRightControlLabel" type="Label" parent="VBoxContainer"]
 layout_mode = 2
-text = "Steer Right: D"
+text = "Right: 	D"
+
+[node name="DrinkLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Drink: Spacebar"
+
+[node name="ResetLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Reset: R (resets car position and the drunk-o-meter)"
 
 [node name="ExitButton" type="Button" parent="."]
 anchors_preset = 7
