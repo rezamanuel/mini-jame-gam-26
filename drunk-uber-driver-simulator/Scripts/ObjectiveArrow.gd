@@ -1,6 +1,6 @@
 extends CSGBox3D
 
-@onready var target = get_tree().root.get_node("game/ramp")
+#@onready var target = get_tree().root.get_node("$map_image/building_019_002")
 
 
 
@@ -11,4 +11,5 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	look_at(target.global_transform.origin, Vector3.UP, true)
+	#look_at(target.global_transform.origin, Vector3.UP, true)
+	pass
