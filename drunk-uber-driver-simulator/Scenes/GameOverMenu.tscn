@@ -1,0 +1,109 @@
+[gd_scene load_steps=7 format=3 uid="uid://bp0qjo7qv5etn"]
+
+[ext_resource type="Script" path="res://Scripts/GameOverMenu.gd" id="1_3sasj"]
+[ext_resource type="Texture2D" uid="uid://bvwxa6f6xby36" path="res://assets/images/dontdrinkdrive.jpeg" id="1_yutg2"]
+[ext_resource type="Theme" uid="uid://cmaaynecjeprh" path="res://GameStateUI.tres" id="2_xgqlr"]
+[ext_resource type="Theme" uid="uid://c512vx707upjo" path="res://GameStateUIBIG.tres" id="3_bwcfs"]
+[ext_resource type="Script" path="res://Scripts/GameStateUI.gd" id="4_cw5pk"]
+[ext_resource type="Script" path="res://Scripts/MoneyUI.gd" id="6_30xwe"]
+
+[node name="GameOver" type="Node"]
+script = ExtResource("1_3sasj")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 1150.0
+offset_bottom = 649.0
+texture = ExtResource("1_yutg2")
+
+[node name="MainMenuButton" type="Button" parent="."]
+offset_left = 13.0
+offset_top = 607.0
+offset_right = 342.0
+offset_bottom = 638.0
+text = "Main Menu"
+
+[node name="RestartButton" type="Button" parent="."]
+offset_left = 427.0
+offset_top = 604.0
+offset_right = 755.0
+offset_bottom = 635.0
+text = "Restart"
+
+[node name="QuitButton" type="Button" parent="."]
+offset_left = 805.0
+offset_top = 603.0
+offset_right = 1129.0
+offset_bottom = 634.0
+text = "Quit"
+
+[node name="TopRightBox" type="VBoxContainer" parent="."]
+anchors_preset = -1
+offset_left = 976.0
+offset_top = 117.0
+offset_right = 1117.0
+offset_bottom = 253.0
+theme = ExtResource("2_xgqlr")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TopRightBox"]
+layout_mode = 2
+
+[node name="Control" type="Control" parent="TopRightBox/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="GameStateUI" type="RichTextLabel" parent="TopRightBox/HBoxContainer/Control"]
+layout_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -6.0
+offset_top = 5.0
+offset_bottom = -24.0
+size_flags_horizontal = 3
+theme = ExtResource("3_bwcfs")
+theme_override_constants/outline_size = 2
+text = "NIGHT 1
+
+8:00 PM"
+script = ExtResource("4_cw5pk")
+
+[node name="Control" type="Control" parent="TopRightBox/HBoxContainer/Control"]
+layout_mode = 3
+anchors_preset = 0
+size_flags_horizontal = 3
+
+[node name="GameStateUI" type="RichTextLabel" parent="TopRightBox/HBoxContainer/Control/Control"]
+layout_mode = 2
+anchor_bottom = 1.0
+offset_left = 28.0
+offset_top = -108.0
+offset_right = 173.0
+offset_bottom = -67.0
+size_flags_horizontal = 3
+theme = ExtResource("3_bwcfs")
+theme_override_constants/outline_size = 2
+text = "NIGHTS: 1"
+script = ExtResource("4_cw5pk")
+
+[node name="ControlMoney" type="Control" parent="TopRightBox"]
+layout_mode = 2
+
+[node name="MoneyUI" type="RichTextLabel" parent="TopRightBox/ControlMoney"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.396
+anchor_top = 0.5
+anchor_right = 1.382
+anchor_bottom = 0.5
+offset_left = -26.836
+offset_top = -61.0
+offset_right = 80.138
+offset_bottom = 4.0
+grow_horizontal = 0
+grow_vertical = 2
+theme = ExtResource("3_bwcfs")
+text = "BANK: $ 0 "
+script = ExtResource("6_30xwe")
+
+[connection signal="pressed" from="MainMenuButton" to="." method="_on_main_menu_button_pressed"]
+[connection signal="pressed" from="RestartButton" to="." method="_on_restart_button_pressed"]
+[connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]
