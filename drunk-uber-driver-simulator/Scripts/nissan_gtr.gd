@@ -9,6 +9,7 @@ var steer_speed = 5
 var spawn_position = Vector3(0,1.5,0)
 var effects = []
 
+signal crash
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
 	steering = lerp(steering, Input.get_axis("right", "left") * 0.5, steer_speed * delta)
@@ -33,7 +34,7 @@ func _process(_delta):
 func _on_body_entered(_body):
 	if linear_velocity.length() < 10:
 		$"../CollisionSound".play()
-		print("Crashed!")
+		crash.emit()
 
 func _on_collision_sound_finished():
 	pass # Replace with function body.

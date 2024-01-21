@@ -14,6 +14,9 @@ func addMoney(amount:int):
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	addMoney(5)
 	pass
 	
+
+
+func _on_trip_manager_complete_trip(moneyAmount):
+	addMoney(moneyAmount)

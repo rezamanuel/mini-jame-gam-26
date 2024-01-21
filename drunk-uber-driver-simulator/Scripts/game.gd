@@ -3,11 +3,11 @@ extends Node3D
 var nissan = preload("res://Scenes/nissan_gtr.tscn")
 signal onDrink(bac: int)
 var bac = 0
-
+signal drunk(bacPercent:float)
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$CarEngineSound.play()
-	$GameMusic.play()
+	$Player/CarEngineSound.play()
+	$Player/GameMusic.play()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
@@ -19,10 +19,12 @@ func _process(_delta):
 		if bac < 0.39:
 			_add_bac(0.03)
 			print("Your bac is now " + str(bac))
-			$NissanGTR._drink()
-			$NissanGTR/camera_pivot._drink()
+			$Player/NissanGTR._drink()
+			$Player/NissanGTR/camera_pivot._drink()
 		else:
 			print("You've had too much to drink")
+	if bac > 0:
+		drunk.emit(bac/.39)
 
 func _add_bac(amount: float):
 	bac += amount
