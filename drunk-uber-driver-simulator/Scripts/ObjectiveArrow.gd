@@ -11,5 +11,9 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	#look_at(target.global_transform.origin, Vector3.UP, true)
-	pass
+	if(target != null):
+		look_at(target.global_transform.origin, Vector3.UP, true)
+
+
+func _on_trip_manager_route_to_node(destinationNode):
+	target = destinationNode

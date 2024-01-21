@@ -13,5 +13,5 @@ func _process(delta):
 
 
 func _on_player_inventory_money_changed(playerMoneyAmount):
-	text = "$ %s" %playerMoneyAmount
+	text = "Bank: $ %s" %int(playerMoneyAmount)
 	

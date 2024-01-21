@@ -29,3 +29,7 @@ func _on_night_cycle_timer_tick(inGameTime):
 func _on_session_data_night_ended(moneyAmount, nightNumber):
 	nightNum = nightNumber
 
+
+
+func _on_trip_manager_trip_money_amount_changed(potentialMoney):
+	pass # Replace with function body.

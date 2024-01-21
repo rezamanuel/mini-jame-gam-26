@@ -18,7 +18,7 @@ material = SubResource("StandardMaterial3D_fvij0")
 inner_radius = 1.884
 outer_radius = 2.007
 
-[node name="TripManager" type="Node" node_paths=PackedStringArray("PassangerPrefab", "DestinationPrefab", "CelebratingPrefab")]
+[node name="TripManager" type="Node3D" node_paths=PackedStringArray("PassangerPrefab", "DestinationPrefab", "CelebratingPrefab")]
 script = ExtResource("1_buynv")
 PassangerPrefab = NodePath("PassangerPickupArea")
 DestinationPrefab = NodePath("Destination")
@@ -300,13 +300,13 @@ shape = SubResource("SphereShape3D_h5xax")
 [connection signal="CarEntered" from="PassangerPickupArea" to="PassangerPickupArea/passanger" method="_on_passanger_pickup_area_car_entered"]
 [connection signal="body_shape_entered" from="PassangerPickupArea" to="PassangerPickupArea" method="_on_body_shape_entered"]
 [connection signal="body_shape_exited" from="PassangerPickupArea" to="PassangerPickupArea" method="_on_body_shape_exited"]
-[connection signal="PassangerPickup" from="PassangerPickupArea/passanger" to="." method="_on_passanger_passanger_pickup"]
 [connection signal="PassangerPickup" from="PassangerPickupArea/passanger" to="PassangerPickupArea" method="_on_passanger_passanger_pickup"]
+[connection signal="PassangerPickup" from="PassangerPickupArea/passanger" to="." method="_on_passanger_passanger_pickup"]
 [connection signal="body_entered" from="PassangerPickupArea/passanger/Area3D" to="PassangerPickupArea/passanger" method="_on_area_3d_body_entered"]
 [connection signal="body_shape_entered" from="Destination" to="Destination" method="_on_body_shape_entered"]
 [connection signal="body_shape_exited" from="Destination" to="Destination" method="_on_body_shape_exited"]
-[connection signal="reachedDestination" from="Destination" to="." method="_on_destination_reached_destination"]
 [connection signal="reachedDestination" from="Destination" to="PassangerPickupArea" method="_on_destination_reached_destination"]
+[connection signal="reachedDestination" from="Destination" to="." method="_on_destination_reached_destination"]
 [connection signal="body_entered" from="celebrating/Area3D" to="celebrating" method="_on_area_3d_body_entered"]
 
 [editable path="PassangerPickupArea/passanger"]
