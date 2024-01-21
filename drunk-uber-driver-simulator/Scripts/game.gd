@@ -25,7 +25,6 @@ func _process(_delta):
 			print("You've had too much to drink")
 
 func _add_bac(amount: float):
-	$DrinkingSound.play()
 	bac += amount
 	onDrink.emit(amount)
 

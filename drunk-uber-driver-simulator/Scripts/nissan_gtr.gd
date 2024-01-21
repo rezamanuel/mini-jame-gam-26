@@ -29,6 +29,7 @@ func _on_collision_sound_finished():
 	pass # Replace with function body.
 
 func _drink():
+	$"../DrinkingSound".play()
 	var randnum = rng.randi_range(0, 2)
 	effects.append(randnum)
 	_change_car_physics(randnum, 1)
