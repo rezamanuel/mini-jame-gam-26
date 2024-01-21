@@ -1,15 +1,43 @@
 [gd_scene load_steps=3 format=3 uid="uid://cj30fyupkdv5"]
 
 [ext_resource type="Texture2D" uid="uid://cwmhxhmbilujv" path="res://assets/images/game_over.jpeg" id="1_l4f4v"]
-[ext_resource type="Script" path="res://Scripts/GameOverScreen.gd" id="1_llrvh"]
 
-[node name="GameOverScreen" type="Node"]
-script = ExtResource("1_llrvh")
+[sub_resource type="GDScript" id="GDScript_2ux6n"]
+script/source = "extends Control
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+	
+func move_on():
+	hide()
+"
+
+[node name="GameOverScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 579.0
+offset_top = 326.0
+offset_right = 579.0
+offset_bottom = 326.0
+scale = Vector2(1.89508, 1.75913)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = SubResource("GDScript_2ux6n")
 
 [node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -306.0
+offset_top = -188.0
+offset_right = 306.0
+offset_bottom = 185.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
@@ -18,6 +46,15 @@ texture = ExtResource("1_l4f4v")
 [node name="ScreenTimer" type="Timer" parent="."]
 wait_time = 2.0
 one_shot = true
-autostart = true
+
+[node name="ExplanationText" type="Label" parent="."]
+layout_mode = 0
+offset_left = -178.0
+offset_top = 112.0
+offset_right = 178.0
+offset_bottom = 135.0
+text = "You did not make enough money for the night
+Try again tomorrow!"
+horizontal_alignment = 1
 
 [connection signal="timeout" from="ScreenTimer" to="." method="move_on"]

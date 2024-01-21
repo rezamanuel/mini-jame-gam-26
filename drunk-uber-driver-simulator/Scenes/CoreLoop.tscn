@@ -1,10 +1,12 @@
-[gd_scene load_steps=10 format=3 uid="uid://cg0e5q3gij84a"]
+[gd_scene load_steps=12 format=3 uid="uid://cg0e5q3gij84a"]
 
 [ext_resource type="Script" path="res://Scripts/SessionData.gd" id="1_d50y5"]
 [ext_resource type="Script" path="res://NightCycleTimer.gd" id="2_44kwh"]
 [ext_resource type="Script" path="res://Scripts/PlayerInventory.gd" id="3_m25fl"]
-[ext_resource type="Theme" uid="uid://b8bjo13c4kdbo" path="res://GameStateUIBIG.tres" id="4_3frjn"]
+[ext_resource type="Theme" uid="uid://c512vx707upjo" path="res://GameStateUIBIG.tres" id="4_3frjn"]
+[ext_resource type="PackedScene" uid="uid://bp0qjo7qv5etn" path="res://Scenes/GameOverMenu.tscn" id="4_vrwtq"]
 [ext_resource type="Script" path="res://Scripts/GameStateUI.gd" id="5_0nfe5"]
+[ext_resource type="PackedScene" uid="uid://cj30fyupkdv5" path="res://Scenes/GameOverScreen.tscn" id="5_f334p"]
 [ext_resource type="Texture2D" uid="uid://u8ui6wh8j630" path="res://icon.svg" id="6_1lvje"]
 [ext_resource type="Script" path="res://Scripts/MoneyUI.gd" id="7_lptr6"]
 [ext_resource type="Script" path="res://Scenes/PotentialMoneyUI.gd" id="8_bin1h"]
@@ -96,7 +98,24 @@ theme = ExtResource("4_3frjn")
 text = "$ "
 script = ExtResource("8_bin1h")
 
+[node name="GameOverMenu" parent="." instance=ExtResource("4_vrwtq")]
+visible = false
+anchors_preset = 15
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GameOverScreen" parent="." instance=ExtResource("5_f334p")]
+visible = false
+
 [connection signal="nightEnded" from="." to="TopRightBox/HBoxContainer/Control/GameStateUI" method="_on_session_data_night_ended"]
 [connection signal="tick" from="NightCycleTimer" to="TopRightBox/HBoxContainer/Control/GameStateUI" method="_on_night_cycle_timer_tick"]
 [connection signal="timeout" from="NightCycleTimer" to="." method="_on_night_cycle_timer_timeout"]
 [connection signal="moneyChanged" from="PlayerInventory" to="TopRightBox/ControlMoney/MoneyUI" method="_on_player_inventory_money_changed"]
+[connection signal="timeout" from="GameOverScreen/ScreenTimer" to="." method="_on_screen_timer_timeout"]
+
+[editable path="GameOverMenu"]
+[editable path="GameOverScreen"]

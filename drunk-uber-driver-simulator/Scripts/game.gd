@@ -38,7 +38,4 @@ func _on_sober_timeout():
 		_add_bac(-0.03)
 	else:
 		pass
-
-func _on_session_data_night_ended(moneyAmount, nightNumber):
-	var next_night = load("res://Scenes/next_night.tscn").instantiate()
-	get_tree().current_scene.add_child(next_night)
+	

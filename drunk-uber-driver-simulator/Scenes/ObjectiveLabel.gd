@@ -13,3 +13,7 @@ func _process(delta):
 
 func _on_session_data_target_money_changed(newTarget):
 	text = "TONIGHT'S OBJECTIVE: $ %s" % newTarget
+
+
+func _on_session_data_game_over():
+	set_visible(false)
