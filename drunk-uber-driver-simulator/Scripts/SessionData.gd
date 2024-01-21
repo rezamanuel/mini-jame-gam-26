@@ -19,6 +19,9 @@ func _ready():
 	targetMoneyChanged.emit(targetMoney)
 	playerMoneyTotal = 0
 	nightNumber = 1
+	#nightEnded.emit(playerInventory.playerMoneyAmount, nightNumber)
+	#targetMoney = 1000
+	#targetMoneyChanged.emit(targetMoney)
 	
 # display money, night num, Game over UI. Button to restart or return to main menu.
 func game_over():
@@ -39,15 +42,18 @@ func _process(delta):
 func _on_night_cycle_timer_timeout():
 	playerMoneyTotal += playerInventory.playerMoneyAmount
 	totalMoneyChanged.emit(playerMoneyTotal)
-	nightEnded.emit(playerInventory.playerMoneyAmount, nightNumber)
 	if(playerInventory.playerMoneyAmount >= targetMoney):
 		# great success, move onto next night.
 		nightNumber += 1
+		nightEnded.emit(playerInventory.playerMoneyAmount, nightNumber)
 		targetMoney = targetMoney*nightNumber - (targetMoney*.5) # edit this line to adjust money goal difficulty
 		targetMoneyChanged.emit(targetMoney)
+		playerInventory.zeroMoney()
+		%NissanGTR._reset_car()
 		var next_night = load("res://Scenes/next_night.tscn").instantiate()
 		get_tree().current_scene.add_child(next_night)
 	else:
+		nightEnded.emit(playerInventory.playerMoneyAmount, nightNumber)
 		gameOver.emit()
 		game_over()
 	# cleans up any current tasks, calculates if Game Over, score.

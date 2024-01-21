@@ -28,5 +28,6 @@ func _on_night_cycle_timer_tick(inGameTime):
 
 func _on_session_data_night_ended(moneyAmount, nightNumber):
 	nightNum = nightNumber
+	print(nightNum)
 
 

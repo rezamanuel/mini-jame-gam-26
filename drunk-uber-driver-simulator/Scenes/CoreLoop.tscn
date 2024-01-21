@@ -100,7 +100,6 @@ script = ExtResource("8_bin1h")
 
 [node name="GameOverMenu" parent="." instance=ExtResource("4_vrwtq")]
 visible = false
-anchors_preset = 15
 offset_left = 0.0
 offset_top = 0.0
 offset_right = 0.0
@@ -111,7 +110,6 @@ grow_vertical = 2
 [node name="GameOverScreen" parent="." instance=ExtResource("5_f334p")]
 visible = false
 
-[connection signal="nightEnded" from="." to="TopRightBox/HBoxContainer/Control/GameStateUI" method="_on_session_data_night_ended"]
 [connection signal="tick" from="NightCycleTimer" to="TopRightBox/HBoxContainer/Control/GameStateUI" method="_on_night_cycle_timer_tick"]
 [connection signal="timeout" from="NightCycleTimer" to="." method="_on_night_cycle_timer_timeout"]
 [connection signal="moneyChanged" from="PlayerInventory" to="TopRightBox/ControlMoney/MoneyUI" method="_on_player_inventory_money_changed"]

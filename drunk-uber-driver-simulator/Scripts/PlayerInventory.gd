@@ -8,6 +8,10 @@ signal moneyChanged(playerMoneyAmount:int)
 func _ready():
 	pass # Replace with function body.
 
+func zeroMoney():
+	playerMoneyAmount = 0
+	moneyChanged.emit(playerMoneyAmount)
+
 func addMoney(amount:int):
 	playerMoneyAmount += amount
 	moneyChanged.emit(playerMoneyAmount)
