@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://c4sf33t21xjrs"]
+[gd_scene load_steps=5 format=3 uid="uid://c4sf33t21xjrs"]
 
 [ext_resource type="Script" path="res://Scripts/DrunkOMeter.gd" id="1_nk7yw"]
+[ext_resource type="FontFile" uid="uid://c4xc2n3wph1dp" path="res://assets/fonts/alarm clock.ttf" id="2_lvgn6"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m3ukw"]
 
@@ -8,8 +9,13 @@
 bg_color = Color(0.8, 0.670588, 0.121569, 1)
 
 [node name="DrunkOMeter" type="ProgressBar"]
-offset_right = 117.0
-offset_bottom = 235.0
+anchors_preset = -1
+anchor_right = 0.102
+anchor_bottom = 0.363
+offset_right = -0.504006
+offset_bottom = -0.224004
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_styles/background = SubResource("StyleBoxFlat_m3ukw")
 theme_override_styles/fill = SubResource("StyleBoxFlat_5kri2")
 max_value = 0.39
@@ -17,3 +23,17 @@ step = 0.03
 fill_mode = 3
 show_percentage = false
 script = ExtResource("1_nk7yw")
+
+[node name="18" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.021
+anchor_right = 1.0
+anchor_bottom = 1.144
+offset_top = 0.0649935
+offset_bottom = -5.84001
+theme_override_fonts/font = ExtResource("2_lvgn6")
+theme_override_font_sizes/font_size = 18
+text = "DrunkOMeter"
+horizontal_alignment = 1
+vertical_alignment = 1
