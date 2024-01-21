@@ -53,8 +53,8 @@ func _reset_car():
 		_sober()
 	$camera_pivot._reset_drink()
 	print("Reset!")
-	get_parent()._reset_bac()
-	$"../DrunkOMeter"._reset_progress()
+	$"../../SessionData/TopRightBox/HBoxContainer/Control2/DrunkOMeter"._reset_progress()
+	$"../.."._reset_bac()
 
 
 func _on_sober_timeout():
