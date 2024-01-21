@@ -51,7 +51,7 @@ func _on_collision_sound_finished():
 
 func _drink():
 	$"../DrinkingSound".play()
-	var randnum = rng.randi_range(0, 2)
+	var randnum = rng.randi_range(0, 3)
 	effects.append(randnum)
 	_change_car_physics(randnum, 1)
 	print("Random effect " + str(randnum) + " triggered")
@@ -90,6 +90,9 @@ func _change_car_physics(num: int, mod: int):
 		$frontright.wheel_roll_influence += 0.25 * mod
 	if num == 2:
 		steer_speed -= 0.2 * mod
+	if num == 3:
+		max_rpm += 200 * mod
+		max_torque += 100 * mod
 		
 func _play_random_tire_sound_effect():
 	var randnum = rng.randi_range(0, 3)
