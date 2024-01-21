@@ -1,7 +1,9 @@
-[gd_scene load_steps=24 format=3 uid="uid://bb83td6650tnk"]
+[gd_scene load_steps=26 format=3 uid="uid://bb83td6650tnk"]
 
 [ext_resource type="Script" path="res://Scripts/nissan_gtr.gd" id="1_3tjrp"]
+[ext_resource type="PackedScene" path="res://assets/effects/smoke.tscn" id="2_pyeie"]
 [ext_resource type="Script" path="res://Scenes/camera_pivot.gd" id="2_tr4qd"]
+[ext_resource type="PackedScene" uid="uid://det8v40au2st" path="res://Scenes/objective_arrow.tscn" id="4_0x6s1"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qo16r"]
 resource_name = "tire"
@@ -495,6 +497,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.029, 0.386, 1.636)
 mesh = SubResource("ArrayMesh_e4r5f")
 skeleton = NodePath("")
 
+[node name="Smoke" parent="backleft" instance=ExtResource("2_pyeie")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.150322, -0.368804)
+
 [node name="backright" type="VehicleWheel3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.07091, -0.379143, -1.64961)
 use_as_traction = true
@@ -508,6 +513,9 @@ damping_relaxation = 1.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.071, 0.379, 1.65)
 mesh = SubResource("ArrayMesh_yc7jl")
 skeleton = NodePath("")
+
+[node name="Smoke" parent="backright" instance=ExtResource("2_pyeie")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.150322, -0.368804)
 
 [node name="frontright" type="VehicleWheel3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.071, -0.366, 1.97514)
@@ -549,3 +557,5 @@ script = ExtResource("2_tr4qd")
 
 [node name="Camera3D" type="Camera3D" parent="camera_pivot"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 2.5727, -7.43343)
+
+[node name="ObjectiveArrow" parent="." instance=ExtResource("4_0x6s1")]

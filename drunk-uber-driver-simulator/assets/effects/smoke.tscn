@@ -1,0 +1,41 @@
+[gd_scene load_steps=7 format=3 uid="uid://bvni4ykgapm28"]
+
+[ext_resource type="Texture2D" uid="uid://dr1pwcklb8pmb" path="res://assets/images/toppng.com-smoke-particle-texture-399x385.png" id="1_wrm4q"]
+
+[sub_resource type="Curve" id="Curve_ysb5k"]
+_data = [Vector2(0, 0.448), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_wuet6"]
+curve = SubResource("Curve_ysb5k")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_c7hql"]
+emission_shape = 1
+emission_sphere_radius = 0.3
+direction = Vector3(0, 1, 0)
+spread = 0.0
+initial_velocity_max = 1.0
+gravity = Vector3(0, 0, 0)
+linear_accel_max = 2.0
+scale_max = 3.0
+scale_curve = SubResource("CurveTexture_wuet6")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_asl37"]
+transparency = 1
+cull_mode = 2
+shading_mode = 0
+albedo_color = Color(0.784314, 0.784314, 0.784314, 0.247059)
+albedo_texture = ExtResource("1_wrm4q")
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_fy5hu"]
+material = SubResource("StandardMaterial3D_asl37")
+
+[node name="Smoke" type="GPUParticles3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.68469, -5.79758)
+amount = 100
+process_material = SubResource("ParticleProcessMaterial_c7hql")
+draw_pass_1 = SubResource("QuadMesh_fy5hu")

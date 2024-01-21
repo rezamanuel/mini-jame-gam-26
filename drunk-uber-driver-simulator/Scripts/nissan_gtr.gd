@@ -4,6 +4,8 @@ var max_rpm = 1000
 var max_torque = 400
 var rng = RandomNumberGenerator.new()
 var steer_speed = 5
+@onready var left_smoke = $backleft/Smoke
+@onready var right_smoke = $backright/Smoke
 var spawn_position = Vector3(0,1.5,0)
 var effects = []
 
@@ -15,6 +17,14 @@ func _physics_process(delta):
 	$backleft.engine_force = acceleration * max_torque * (1 - rpm / max_rpm)
 	rpm = abs($backright.get_rpm())
 	$backright.engine_force = acceleration * max_torque * (1 - rpm / max_rpm)
+	if $backright.get_skidinfo() < 1:
+		left_smoke.emitting = true
+	else:
+		left_smoke.emitting = false
+	if $backleft.get_skidinfo() < 1:
+		right_smoke.emitting = true
+	else:
+		right_smoke.emitting = false
 
 func _process(_delta):
 	if Input.is_action_just_pressed("reset"):
