@@ -8,7 +8,6 @@ var bac = 0
 func _ready():
 	$CarEngineSound.play()
 	$GameMusic.play()
-	pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
