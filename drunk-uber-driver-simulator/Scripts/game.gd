@@ -6,6 +6,8 @@ var bac = 0
 signal drunk(bacPercent:float)
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	var controls = load("res://Scenes/StartTutorialMenu.tscn").instantiate()
+	get_tree().current_scene.add_child(controls)
 	$Player/CarEngineSound.play()
 	$Player/GameMusic.play()
 
