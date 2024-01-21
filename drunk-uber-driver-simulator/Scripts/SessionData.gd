@@ -27,12 +27,12 @@ func _process(delta):
 
 
 func _on_night_cycle_timer_timeout():
-	if(playerInventory.playerMoney >= targetMoney):
+	if(playerInventory.playerMoneyAmount >= targetMoney):
 		# great success, move onto next night.
 		nightNumber += 1
 		targetMoney = targetMoney*nightNumber - (targetMoney*.5) # edit this line to adjust money goal difficulty
 		targetMoneyChanged.emit(targetMoney)
-		nightEnded.emit(playerInventory.playerMoney, nightNumber)
+		nightEnded.emit(playerInventory.playerMoneyAmount, nightNumber)
 	else:
 		game_over()
 	# cleans up any current tasks, calculates if Game Over, score.
