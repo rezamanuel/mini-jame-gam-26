@@ -11,7 +11,7 @@ func get_night_num():
 	return nightNumber
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	targetMoney = 500
+	targetMoney = 0
 	targetMoneyChanged.emit(targetMoney)
 	nightNumber = 1
 	

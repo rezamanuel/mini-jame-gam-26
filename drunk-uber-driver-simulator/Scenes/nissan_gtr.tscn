@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Scripts/nissan_gtr.gd" id="1_3tjrp"]
 [ext_resource type="PackedScene" uid="uid://bvni4ykgapm28" path="res://assets/effects/smoke.tscn" id="2_pyeie"]
 [ext_resource type="Script" path="res://Scenes/camera_pivot.gd" id="2_tr4qd"]
-[ext_resource type="PackedScene" uid="uid://det8v40au2st" path="res://Scenes/objective_arrow.tscn" id="4_0x6s1"]
+[ext_resource type="PackedScene" path="res://Scenes/objective_arrow.tscn" id="4_0x6s1"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qo16r"]
 resource_name = "tire"
