@@ -1,8 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://dt140y6sderyb"]
+[gd_scene load_steps=3 format=3 uid="uid://dt140y6sderyb"]
 
+[ext_resource type="Script" path="res://Scenes/TutorialMenu.gd" id="1_h2jp6"]
 [ext_resource type="Texture2D" uid="uid://bujfnssotya58" path="res://assets/images/TutorialMenu.png" id="1_m6hna"]
 
 [node name="TutorialMenu" type="Node"]
+process_mode = 3
+script = ExtResource("1_h2jp6")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(567, 309.5)
@@ -15,3 +18,5 @@ offset_top = 497.0
 offset_right = 1097.0
 offset_bottom = 553.0
 text = "Close"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

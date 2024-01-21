@@ -17,7 +17,7 @@ func _on_resume_button_pressed():
 
 
 func _on_controls_button_pressed():
-	var controls = load("res://Scenes/ControlsMenu.tscn").instantiate()
+	var controls = load("res://Scenes/TutorialMenu.tscn").instantiate()
 	get_tree().current_scene.add_child(controls)
 
 

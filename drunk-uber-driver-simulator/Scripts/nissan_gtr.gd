@@ -28,13 +28,12 @@ func _physics_process(delta):
 	else:
 		right_smoke.emitting = false
 	if !skid_sound_effect_playing:
-		if $backright.get_skidinfo() < 0.5 or $backleft.get_skidinfo() < 0.5:
+		if $backright.get_skidinfo() < 1 or $backleft.get_skidinfo() < 1:
 			skid_sound_effect_playing = true
 			_play_random_tire_sound_effect()
-	if ($backright.get_skidinfo() == 1 and $backleft.get_skidinfo() == 1) or ($backright.get_skidinfo() == 0 and $backleft.get_skidinfo() == 0):
+	if $backright.get_skidinfo() == 1 and $backleft.get_skidinfo() == 1:
 		skid_sound_effect_playing = false
 		_stop_playing_tire_sound_effect()
-		
 	
 		
 

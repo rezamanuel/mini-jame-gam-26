@@ -12,7 +12,7 @@ func _on_start_button_pressed():
 	get_tree().change_scene_to_file("res://Scenes/game.tscn")
 
 func _on_controls_button_pressed():
-	var controls = load("res://Scenes/ControlsMenu.tscn").instantiate()
+	var controls = load("res://Scenes/TutorialMenu.tscn").instantiate()
 	get_tree().current_scene.add_child(controls)
 
 func _on_quit_button_pressed():
