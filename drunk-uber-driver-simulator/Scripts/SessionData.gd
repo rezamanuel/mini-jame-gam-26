@@ -25,6 +25,7 @@ func _ready():
 	
 # display money, night num, Game over UI. Button to restart or return to main menu.
 func game_over():
+	$"../Player/GameMusic".stop()
 	$TopRightBox.set_visible(false)
 	$GameOverScreen.set_visible(true)
 	$GameOverScreen/ScreenTimer.start()
