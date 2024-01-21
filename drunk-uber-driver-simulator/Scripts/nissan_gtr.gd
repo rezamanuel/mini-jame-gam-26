@@ -15,9 +15,6 @@ func _physics_process(delta):
 	$backleft.engine_force = acceleration * max_torque * (1 - rpm / max_rpm)
 	rpm = abs($backright.get_rpm())
 	$backright.engine_force = acceleration * max_torque * (1 - rpm / max_rpm)
-	
-	print(str($backleft.wheel_friction_slip) + ", " + str($backleft.wheel_roll_influence) + ", " + str(steer_speed))
-	print(effects)
 
 func _process(_delta):
 	if Input.is_action_just_pressed("reset"):
@@ -61,21 +58,12 @@ func _sober():
 	
 func _change_car_physics(num: int, mod: int):
 	if num == 0:
-		if $backleft.wheel_friction_slip < 1 and mod > 0:
-			pass
-		else:
-			$backleft.wheel_friction_slip -= 0.6 * mod
-			$backright.wheel_friction_slip -= 0.6 * mod
+		$backleft.wheel_friction_slip -= 0.6 * mod
+		$backright.wheel_friction_slip -= 0.6 * mod
 	if num == 1:
-		if $backleft.wheel_roll_influence > 1.5 and mod > 0:
-			pass
-		else:
-			$backleft.wheel_roll_influence += 0.25 * mod
-			$backright.wheel_roll_influence += 0.25 * mod
-			$frontleft.wheel_roll_influence += 0.25 * mod
-			$frontright.wheel_roll_influence += 0.25 * mod
+		$backleft.wheel_roll_influence += 0.25 * mod
+		$backright.wheel_roll_influence += 0.25 * mod
+		$frontleft.wheel_roll_influence += 0.25 * mod
+		$frontright.wheel_roll_influence += 0.25 * mod
 	if num == 2:
-		if steer_speed < 0.1:
-			pass
-		else:
-			steer_speed -= 0.2 * mod
+		steer_speed -= 0.2 * mod
