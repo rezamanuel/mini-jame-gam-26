@@ -82,6 +82,13 @@ transform = Transform3D(1, 0, 0, 0, 0.36681, 0.930296, 0, -0.930296, 0.36681, 0,
 
 [node name="DrunkOMeter" parent="." instance=ExtResource("5_hqar6")]
 
+[node name="sober" type="Timer" parent="DrunkOMeter"]
+wait_time = 5.0
+autostart = true
+
 [connection signal="onDrink" from="." to="DrunkOMeter" method="_on_game_on_drink"]
 [connection signal="body_entered" from="NissanGTR" to="NissanGTR" method="_on_body_entered"]
 [connection signal="finished" from="CollisionSound" to="NissanGTR" method="_on_collision_sound_finished"]
+[connection signal="timeout" from="DrunkOMeter/sober" to="." method="_on_sober_timeout"]
+[connection signal="timeout" from="DrunkOMeter/sober" to="NissanGTR" method="_on_sober_timeout"]
+[connection signal="timeout" from="DrunkOMeter/sober" to="DrunkOMeter" method="_on_timer_timeout"]
