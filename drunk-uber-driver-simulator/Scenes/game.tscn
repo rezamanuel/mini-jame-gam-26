@@ -25,12 +25,13 @@ data = PackedVector3Array(-15, 5, 0.5, 15, 5, 0.5, -15, -5, 0.5, 15, 5, 0.5, 15,
 
 [sub_resource type="PrismMesh" id="PrismMesh_uwwxu"]
 left_to_right = 0.0
-size = Vector3(5, 1, 5)
+size = Vector3(5, 0.25, 5)
 
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_p7hpx"]
-data = PackedVector3Array(-2.5, 0.5, 2.5, 2.5, -0.5, 2.5, -2.5, -0.5, 2.5, -2.5, 0.5, -2.5, -2.5, -0.5, -2.5, 2.5, -0.5, -2.5, -2.5, 0.5, 2.5, -2.5, 0.5, -2.5, 2.5, -0.5, 2.5, -2.5, 0.5, -2.5, 2.5, -0.5, -2.5, 2.5, -0.5, 2.5, -2.5, 0.5, -2.5, -2.5, 0.5, 2.5, -2.5, -0.5, -2.5, -2.5, 0.5, 2.5, -2.5, -0.5, 2.5, -2.5, -0.5, -2.5, -2.5, -0.5, 2.5, 2.5, -0.5, 2.5, -2.5, -0.5, -2.5, 2.5, -0.5, 2.5, 2.5, -0.5, -2.5, -2.5, -0.5, -2.5)
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_f60sl"]
+data = PackedVector3Array(-2.5, 0.125, 2.5, 2.5, -0.125, 2.5, -2.5, -0.125, 2.5, -2.5, 0.125, -2.5, -2.5, -0.125, -2.5, 2.5, -0.125, -2.5, -2.5, 0.125, 2.5, -2.5, 0.125, -2.5, 2.5, -0.125, 2.5, -2.5, 0.125, -2.5, 2.5, -0.125, -2.5, 2.5, -0.125, 2.5, -2.5, 0.125, -2.5, -2.5, 0.125, 2.5, -2.5, -0.125, -2.5, -2.5, 0.125, 2.5, -2.5, -0.125, 2.5, -2.5, -0.125, -2.5, -2.5, -0.125, 2.5, 2.5, -0.125, 2.5, -2.5, -0.125, -2.5, 2.5, -0.125, 2.5, 2.5, -0.125, -2.5, -2.5, -0.125, -2.5)
 
 [node name="game" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.710641, 0.511694, 1.39972)
 script = ExtResource("1_pno0n")
 
 [node name="NissanGTR" parent="." instance=ExtResource("2_pdeit")]
@@ -68,7 +69,7 @@ mesh = SubResource("PrismMesh_uwwxu")
 [node name="StaticBody3D" type="StaticBody3D" parent="ramp"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ramp/StaticBody3D"]
-shape = SubResource("ConcavePolygonShape3D_p7hpx")
+shape = SubResource("ConcavePolygonShape3D_f60sl")
 
 [node name="wall2" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.10863, 37.4124)

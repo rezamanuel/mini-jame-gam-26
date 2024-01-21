@@ -21,8 +21,9 @@ func _process(_delta):
 		_reset_car()
 
 func _on_body_entered(_body):
-	$"../CollisionSound".play()
-	print("Crashed!")
+	if linear_velocity.length() < 10:
+		$"../CollisionSound".play()
+		print("Crashed!")
 
 func _on_collision_sound_finished():
 	pass # Replace with function body.
