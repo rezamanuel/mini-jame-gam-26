@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://dnexc8rxfp28g"]
 
 [ext_resource type="PackedScene" uid="uid://bb83td6650tnk" path="res://Scenes/nissan_gtr.tscn" id="1_x5g7x"]
-[ext_resource type="PackedScene" uid="uid://fwbndbsxjvm6" path="res://assets/models/buildings/map_image.glb" id="2_dkh13"]
+[ext_resource type="PackedScene" uid="uid://c7k28d02wfqj3" path="res://assets/models/buildings/map_image.glb" id="2_dkh13"]
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_li35l"]
 data = PackedVector3Array(-45000, 0, 45000, 45000, 0, -45000, 45000, 0, 45000, -45000, 0, 45000, -45000, 0, -45000, 45000, 0, -45000)
@@ -12,7 +12,7 @@ data = PackedVector3Array(-2500, 0, 2500, 2500, 0, -2500, 2500, 0, 2500, -2500, 
 [node name="Node3D" type="Node3D"]
 
 [node name="Nissan GTR" parent="." instance=ExtResource("1_x5g7x")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.5529, 4.65218, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 62.379, 5, 2.08165e-12)
 
 [node name="map_image" parent="." instance=ExtResource("2_dkh13")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 2.08165e-12, 2.08165e-12)
@@ -21,6 +21,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 2.08165e-12, 2.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="map_image/Plane_Grass/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_li35l")
+
+[node name="Plane_Road" parent="map_image" index="1"]
+transform = Transform3D(-0.004035, 0, -3.52751e-10, 0, 0.0004, 0, 3.52751e-10, 0, -0.004035, 215.104, 0.01, -270.198)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="map_image/Plane_Road" index="0"]
 
