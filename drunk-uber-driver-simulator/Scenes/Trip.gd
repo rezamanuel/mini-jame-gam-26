@@ -52,6 +52,8 @@ func _ready():
 func _process(delta):
 	add_money_trip_amount(-1*(tripMoneyAmount*effectiveMoneyDecay*delta)) 
 	# print(-1*tripMoneyAmount*effectiveMoneyDecay*delta)
+	if Input.is_action_just_pressed("reset"):
+		add_money_trip_amount(-100)
 
 
 func _on_passanger_passanger_pickup():

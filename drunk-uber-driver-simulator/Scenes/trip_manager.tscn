@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scenes/Trip.gd" id="1_buynv"]
 [ext_resource type="Script" path="res://Scenes/PassangerPickupArea.gd" id="2_32dmm"]
-[ext_resource type="PackedScene" uid="uid://cipkt8wdlsoqj" path="res://Scenes/passanger.tscn" id="3_kf1cb"]
+[ext_resource type="PackedScene" path="res://Scenes/passanger.tscn" id="3_kf1cb"]
 [ext_resource type="Script" path="res://Scenes/Destination.gd" id="4_wio7x"]
 [ext_resource type="Script" path="res://Scenes/celebrating.gd" id="5_bl5u5"]
 
