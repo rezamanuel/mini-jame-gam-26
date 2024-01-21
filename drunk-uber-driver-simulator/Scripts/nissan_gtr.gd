@@ -8,6 +8,7 @@ var steer_speed = 5
 @onready var right_smoke = $backright/Smoke
 var spawn_position = Vector3(0,1.5,0)
 var effects = []
+var skid_sound_effect_playing = false
 
 signal crash
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -26,6 +27,16 @@ func _physics_process(delta):
 		right_smoke.emitting = true
 	else:
 		right_smoke.emitting = false
+	if !skid_sound_effect_playing:
+		if $backright.get_skidinfo() < 0.5 or $backleft.get_skidinfo() < 0.5:
+			skid_sound_effect_playing = true
+			_play_random_tire_sound_effect()
+	if ($backright.get_skidinfo() == 1 and $backleft.get_skidinfo() == 1) or ($backright.get_skidinfo() == 0 and $backleft.get_skidinfo() == 0):
+		skid_sound_effect_playing = false
+		_stop_playing_tire_sound_effect()
+		
+	
+		
 
 func _process(_delta):
 	if Input.is_action_just_pressed("reset"):
@@ -80,3 +91,21 @@ func _change_car_physics(num: int, mod: int):
 		$frontright.wheel_roll_influence += 0.25 * mod
 	if num == 2:
 		steer_speed -= 0.2 * mod
+		
+func _play_random_tire_sound_effect():
+	var randnum = rng.randi_range(0, 3)
+	if randnum == 0:
+		$"TireSkid1".play()
+	elif randnum == 1:
+		$"TireSkid2".play()
+	elif randnum == 2:
+		$"TireSkid3".play()
+	else:
+		$"TireSkid4".play()
+	
+	
+func _stop_playing_tire_sound_effect():
+	$"TireSkid1".stop()
+	$"TireSkid2".stop()
+	$"TireSkid3".stop()
+	$"TireSkid4".stop()

@@ -1,9 +1,13 @@
-[gd_scene load_steps=26 format=3 uid="uid://bb83td6650tnk"]
+[gd_scene load_steps=30 format=3 uid="uid://bb83td6650tnk"]
 
 [ext_resource type="Script" path="res://Scripts/nissan_gtr.gd" id="1_3tjrp"]
-[ext_resource type="PackedScene" uid="uid://bvni4ykgapm28" path="res://assets/effects/smoke.tscn" id="2_pyeie"]
+[ext_resource type="PackedScene" path="res://assets/effects/smoke.tscn" id="2_pyeie"]
 [ext_resource type="Script" path="res://Scenes/camera_pivot.gd" id="2_tr4qd"]
-[ext_resource type="PackedScene" path="res://Scenes/objective_arrow.tscn" id="4_0x6s1"]
+[ext_resource type="PackedScene" uid="uid://det8v40au2st" path="res://Scenes/objective_arrow.tscn" id="4_0x6s1"]
+[ext_resource type="AudioStream" uid="uid://bee83xou4786s" path="res://assets/sounds/skid1.mp3" id="5_tbesi"]
+[ext_resource type="AudioStream" uid="uid://jv47ebiwf82f" path="res://assets/sounds/skid2.mp3" id="6_gkriw"]
+[ext_resource type="AudioStream" uid="uid://ctpl6buslqyf8" path="res://assets/sounds/skid3.mp3" id="7_87lfb"]
+[ext_resource type="AudioStream" uid="uid://bjj2efq1fhan2" path="res://assets/sounds/skid4.mp3" id="8_ps2yi"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qo16r"]
 resource_name = "tire"
@@ -559,3 +563,15 @@ script = ExtResource("2_tr4qd")
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 2.5727, -7.43343)
 
 [node name="ObjectiveArrow" parent="." instance=ExtResource("4_0x6s1")]
+
+[node name="TireSkid1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_tbesi")
+
+[node name="TireSkid2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_gkriw")
+
+[node name="TireSkid3" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_87lfb")
+
+[node name="TireSkid4" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_ps2yi")
