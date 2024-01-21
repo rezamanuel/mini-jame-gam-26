@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Scripts/SessionData.gd" id="1_d50y5"]
 [ext_resource type="Script" path="res://NightCycleTimer.gd" id="2_44kwh"]
 [ext_resource type="Script" path="res://Scripts/PlayerInventory.gd" id="3_m25fl"]
-[ext_resource type="Theme" uid="uid://cmaaynecjeprh" path="res://GameStateUI.tres" id="4_5dakx"]
+[ext_resource type="Theme" uid="uid://b8bjo13c4kdbo" path="res://GameStateUIBIG.tres" id="4_3frjn"]
 [ext_resource type="Script" path="res://Scripts/GameStateUI.gd" id="5_0nfe5"]
 [ext_resource type="Texture2D" uid="uid://u8ui6wh8j630" path="res://icon.svg" id="6_1lvje"]
 [ext_resource type="Script" path="res://Scripts/MoneyUI.gd" id="7_lptr6"]
@@ -45,7 +45,7 @@ offset_left = -6.95
 offset_top = 22.0
 offset_bottom = -19.0
 size_flags_horizontal = 3
-theme = ExtResource("4_5dakx")
+theme = ExtResource("4_3frjn")
 theme_override_constants/outline_size = 2
 text = "NIGHT 1
 
@@ -72,7 +72,7 @@ offset_right = -87.0
 offset_bottom = 66.0
 grow_horizontal = 0
 grow_vertical = 2
-theme = ExtResource("4_5dakx")
+theme = ExtResource("4_3frjn")
 text = "$ "
 script = ExtResource("7_lptr6")
 
@@ -92,7 +92,7 @@ offset_right = -95.0
 offset_bottom = 71.0
 grow_horizontal = 0
 grow_vertical = 2
-theme = ExtResource("4_5dakx")
+theme = ExtResource("4_3frjn")
 text = "$ "
 script = ExtResource("8_bin1h")
 

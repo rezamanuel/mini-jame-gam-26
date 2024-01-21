@@ -1,6 +1,6 @@
 extends CSGBox3D
 
-#@onready var target = get_tree().root.get_node("$map_image/building_019_002")
+@onready var target 
 
 
 
