@@ -26,4 +26,4 @@ func _on_passanger_pickup_area_car_entered(isCarStopped, carPosition):
 func _on_area_3d_body_entered(body):
 	if(typeof(body) == typeof(VehicleBody3D) && m_isCarStopped):
 		PassangerPickup.emit()
-		queue_free()
+		
