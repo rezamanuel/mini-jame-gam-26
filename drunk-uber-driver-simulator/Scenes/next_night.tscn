@@ -1,0 +1,73 @@
+[gd_scene load_steps=4 format=3 uid="uid://dpsr2ebw5457h"]
+
+[ext_resource type="Script" path="res://Scripts/NextNight.gd" id="1_t25s7"]
+[ext_resource type="Texture2D" uid="uid://dx4gh0icgnqpd" path="res://assets/images/successphoto.jpg" id="2_pxtu0"]
+[ext_resource type="AudioStream" uid="uid://dukxcwmjoiltj" path="res://assets/sounds/yay.mp3" id="3_neo2i"]
+
+[node name="NextNight" type="Node"]
+process_mode = 3
+script = ExtResource("1_t25s7")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 1153.0
+offset_bottom = 653.0
+texture = ExtResource("2_pxtu0")
+
+[node name="SuccessSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_neo2i")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -179.0
+offset_top = -170.0
+offset_right = 179.0
+offset_bottom = -34.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="NextNightButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Next Night"
+
+[node name="RestartButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Restart"
+
+[node name="MainMenuButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Main Menu"
+
+[node name="QuitButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Quit"
+
+[node name="Wowza!" type="Label" parent="."]
+anchors_preset = -1
+anchor_left = 0.282
+anchor_top = 0.201
+anchor_right = 0.734
+anchor_bottom = 0.5
+offset_left = 44.136
+offset_top = 2.752
+offset_right = -61.5681
+offset_bottom = 17.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+text = "Congrats! You made enough money to make it to the next night!"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[connection signal="pressed" from="VBoxContainer/NextNightButton" to="." method="_on_next_night_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/RestartButton" to="." method="_on_restart_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/MainMenuButton" to="." method="_on_main_menu_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]

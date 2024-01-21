@@ -11,13 +11,14 @@ func get_night_num():
 	return nightNumber
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	targetMoney = 500
+	targetMoney = 0
 	targetMoneyChanged.emit(targetMoney)
 	nightNumber = 1
 	
 # display money, night num, Game over UI. Button to restart or return to main menu.
 func game_over():
-	pass
+	var game_over_screen = load("res://Scenes/GameOverScreen.tscn").instantiate()
+	get_tree().current_scene.add_child(game_over_screen)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

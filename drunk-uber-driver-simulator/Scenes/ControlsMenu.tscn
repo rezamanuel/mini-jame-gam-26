@@ -2,10 +2,10 @@
 
 [ext_resource type="Script" path="res://Scripts/ControlsMenu.gd" id="1_nqn8a"]
 
-[sub_resource type="Gradient" id="Gradient_xc3bs"]
+[sub_resource type="Gradient" id="Gradient_ojjrj"]
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_r20lr"]
-gradient = SubResource("Gradient_xc3bs")
+gradient = SubResource("Gradient_ojjrj")
 fill_from = Vector2(1, 0)
 fill_to = Vector2(0, 0)
 
